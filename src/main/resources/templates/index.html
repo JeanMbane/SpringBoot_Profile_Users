@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head>
+<meta charset="utf-8">
+<title>Home -CodeJava</title>
+<link rel="stylesheet" type ="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+
+</head>
+<body>
+ <center>	
+	<div>
+	  <h1 class="text-danger">welcome TO MJA Code</h1>
+	</div>
+	<div>
+	  <h3><a th:href="@{/register}">Register</a></h3>
+	</div>
+		<div>
+	  <h3><a th:href="@{/Login}">Login</a></h3>
+	</div>
+</center>
+</body>
+</html>

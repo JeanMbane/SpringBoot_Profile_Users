@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- Add icon library -->
+<link rel="stylesheet"  type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+<link  rel="stylesheet"  type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"  />
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+.input-container {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.ps {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  width: 50%;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.icon {
+  padding: 10px;
+  background: dodgerblue;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: dodgerblue;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width:  30%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+<form th:action="@{/process_register}" style="max-width:500px;margin:auto" th:object="${user}"  method="post">
+  <h2>New Member</h2>
+  
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" type="text" placeholder="Prenom" name="prenom" th:field="*{prenom}" required/>
+  </div>
+  
+  <div class="input-container">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" type="text" placeholder="Nom" name="Nom"  th:field="*{name}" required/>
+  </div>
+  
+   <div class="input-container">
+    <i class="fa fa-calendar icon"></i>
+     <input class="input-field" type="date" name="Date De Naissance" th:field="*{datedeNaissance}" required/>
+  </div>
+  
+  <div class="input-container">
+    <i class="fa fa-envelope icon"></i>
+    <input class="input-field" type="email" placeholder="Email" name="email" th:field="*{email}" required/>
+  </div>
+ 
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Password" name="psw" required>
+  </div>
+  
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Repeat Password" name="psw-repeat" th:field="*{password}" required>
+  </div>
+  
+  <div class="input-container">
+    <i class="fa fa-building icon"></i>
+    <input class="input-field" type="text" placeholder="Company" name="Company" th:field="*{company}" required>
+  </div>
+  
+   <div class="input-container">
+  <label>
+      <input type="checkbox" name="remember" checked="checked" th:field="*{enabled}" required> Remember me
+    </label>
+  </div>
+  <button type="submit" class="btn">Submit</button>
+  
+  <div class="input-container">
+    <p class="ps">Already have an account? <a th:href="@{/Login}"> Log In</a></p>
+  </div>
+</form>
+
+</body>
+</html>
