@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mbane.users.Entity.Roles;
 import com.mbane.users.Entity.Users;
@@ -38,12 +38,12 @@ public class AppController {
 	@Autowired
 	private UserServiceInterface userServiceInterface;
 	
+	private Users outus;
 	@GetMapping("")
 	private String viewHomepage() 
 	{
 		return "index";
 	}
-	
 	
 	@GetMapping("/Login")
 	private String Loginpage(Model model) 
@@ -54,33 +54,47 @@ public class AppController {
 	}
 	
 	@PostMapping("/action_Login")
-	public String loginprocess(Users user) 
+	public String loginprocess(Users user,ModelMap modelMap) 
 	{
 		
-		System.out.println("Premon: "+user.getPrenom());
-		System.out.println("Password: "+user.getPassword());
-		
 		Users outlog= userServiceInterface.findUsersByPrenom(user.getPrenom());
-		System.out.println(outlog);
 		
 		if(user.getPassword().equals(outlog.getPassword())) 
 		{
-			
-			return userProfile(outlog);
+			//on transfer les informations de la base de donnee sur l'interface
+			userProfile(user,modelMap);
+			outus=outlog;
+			modelMap.addAttribute("user",outlog);			
+			return  "Userprofile"; 
 			
 		}else {
-			
 			return"Login1";
 		}
 					
 		
 	}
 	
-	public String userProfile(Users user) 
-	{
-		
-		return "Userprofile";
+	@GetMapping("/Userprofile")
+	public String userProfile(Users user,ModelMap model) 
+	{	
+		System.out.println("UserEdtit user.....: "+user);
+		model.addAttribute("user",user);
+		return "EditPtofile";
 	} 
+	
+	
+	  @GetMapping("/EditPtofile") 
+	  public String userEditProfile(@RequestParam ("id") Long id, ModelMap model)
+	  {
+		
+		  Users user=userServiceInterface.getUserbyId(id);
+		  System.out.println("UserEdtit....: "+user);
+		  model.addAttribute("user",user);
+		
+	  //Users us=userServiceInterface.getUserbyId(id);
+	  return "EditPtofile";
+	  }
+	 
 	
 	
 	@GetMapping("/register")
@@ -124,9 +138,20 @@ public class AppController {
 		return"success_register";
 	}
 	
-	
-	
-	
+	@PostMapping("/user_updated")
+	public String usersUpdated(Users user) 
+	{
+		Users us =usersReposity.findUsersByEmail(user.getEmail());
+		System.out.println("Before Rested......: "+us);
+		us.setId_user(us.getId_user());
+		us.setName(user.getName());
+		us.setCompany(user.getCompany());
+		us.setPhone(user.getPhone());
+		us.setAddress(user.getAddress());
+		userServiceInterface.updatUsers(us);
+		System.out.println("After Rested....: "+us);
+		return"success_register";
+	}
 	
 	
 	@PostMapping("/SaveRoles")
@@ -142,5 +167,11 @@ public class AppController {
 	{
 		
 		return userServiceInterface.updatUsers(users);
+	}
+	
+	public Users userProfiles(Users user) 
+	{
+		return user;
+		
 	}
 }

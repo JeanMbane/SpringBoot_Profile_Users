@@ -176,10 +176,9 @@ public class UserResepotoryTest {
 	@Test
 	public void TestPrenomAndPass() 
 	{
-		String pren="Rivi";
-		String p="15";
-		
-	    Users us = usersReposity.login("Rivi","15");
+	
+	    
+	    Users us= userServiceInterface.getUserbyId(1L);
 	    System.out.println("Users: "+us);
 	    
 	

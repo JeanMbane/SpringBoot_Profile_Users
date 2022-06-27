@@ -41,27 +41,6 @@
   opacity: 0.9;
 }
 
-.btnl {
-  background-color: dodgerblue;
-  color: white;
-  padding: 9px 20px;
-  border: none;
-  cursor: pointer;
-  width:  20%;
-  opacity: 0.9;
-  font-size: 20px;
-}
-.btns {
-  background-color: dodgerblue;
-  color: white;
-  padding: 5px 20px;
-  border: none;
-  cursor: pointer;
-  width:  10px;
-  opacity: 0.9;
-  font-size:20px;
-}
-
 body{
 
     margin-top:20px;
@@ -126,26 +105,45 @@ body{
     box-shadow: none!important;
 }
 
+.col-sm-9 {
+    width: 474px;
+    height: 35px;
+    font-size: 16px;
+}
+
+.previous {
+  background-color: dodgerblue;
+  color: white;
+   padding: 8px 16px;
+   display: inline-block;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
 </style>
 </head>
 <body>
 
-<form th:action="@{/EditPtofile}" style="max-width:900px;margin:auto;" method="post">
+<form th:action="@{/user_updated}" style="max-width:900px;margin:auto;" th:object="${user}" method="post">
+
 <div class="grid-container">
   <div class="card-body">
   <div class="item3">
     <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
               <div class="card">
-                <div class="card-body" style="text-align:center;font-size: 25px;">
+                <div class="card-body" style="text-align:center;font-size: 22px;">
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="120">
                     <div class="mt-3">
-                      <h4 th:text="${user.prenom}"></h4>
+                      <h4 th:text="${user.prenom}+' '+${user.name}"></h4>
                       <p class="text-secondary mb-1">Full Stack Developer</p>
-                      <p class="text-muted font-size-sm" th:text="${user.Address}"></p>
-                      <a class="btnl" th:href="@{/Login}">Log Out</a>
-                      <a class="btnl ">Message</a>
+                      <p th:text="${user.Address}"></p>
+                      <a href="javascript:history.back()" class="previous" >&laquo; Previous</a>
+                      
                     </div>
                   </div>
                 </div>
@@ -157,7 +155,7 @@ body{
 
   <div class="item5">
    
-  <div class="card mt-2" style="max-height: 481px;font-size:31px;">
+  <div class="card mt-2" style="max-height: 500px;font-size:29.5px;">
                 <ul class="list-group list-group-flush">
                   <li>
                     <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="2" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Website</h6>
@@ -192,33 +190,31 @@ body{
                 <div class="card-body">
                   <div class="row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Name</h6>
-                      <!-- <label for="fname">Kenneth</label> -->
+                      <h6 class="mb-0">Name</h6>  
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <p th:text="${user.name}"></p>
-                      <!-- <input type="text" name="name" th:value="@{user.name}" readonly="readonly" class="col-sm-9 text-secondary"></input> -->
+                 
+                      <input type="text" name="name" th:value="${user.name}" class="col-sm-9"></input>
                     </div>
                   </div>
                   <hr>
                    <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Prenom</h6>
-                      <!-- <label for="fphone">Valdez</label> -->
+                     
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <p th:text="${user.prenom}"></p>
-                   <!--    <input type="text" name="prenom" th:value="@{user.prenom}" readonly="readonly" class="col-sm-9 text-secondary"></input> -->
+                   
+                      <input type="text" name="prenom" th:value="${user.prenom}" class="col-sm-9"></input>
                     </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Email</h6>
-                      <!-- <label for="femail"> fip@jukmuh.al</label> -->
+                      
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <p th:text="${user.email}"></p>
-                     <!--  <input type="text" name="email" th:value="@{user.email}" readonly="readonly" class="col-sm-9 text-secondary"></input> -->
+                      <input type="text" name="email" th:value="${user.email}"  readonly="readonly" class="col-sm-9"></input>
                     </div>
                   </div>
                   <hr>
@@ -228,9 +224,8 @@ body{
                       <h6 class="mb-0">Company</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <!-- MJA -->
-                      <p th:text="${user.company}"></p>
-                      <!-- <input type="text" name="company" th:value="@{user.company}" readonly="readonly" class="col-sm-9 text-secondary"></input> -->
+                              
+                      <input type="text" name="company" th:value="${user.company}" class="col-sm-9"></input>
                     </div>
                   </div>
                   <hr>
@@ -239,26 +234,24 @@ body{
                       <h6 class="mb-0">Address</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <!-- Bay Area, San Francisco, CA -->
-                      <p th:text="${user.Address}"></p>
-                      <!-- <input type="text" name="Address" th:value="@{user.Address}" readonly="readonly" class="col-sm-9 text-secondary"></input> -->
+                    
+                      <input type="text" name="Address" th:value="${user.Address}" class="col-sm-9"></input>
                     </div>
                   </div>
                   <hr>
                          <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Phone</h6>
-                      <!-- <label for="fphone"> (239) 816-9029</label> -->
+                    
                     </div>
                     <div class="col-sm-9 text-secondary">
-                    <p th:text="${user.Phone}"></p>
-                    <!-- <input type="text" name="Phone" th:value="@{user.Phone}" readonly="readonly" class="col-sm-9 text-secondary"></input> -->
+                   
+                    <input type="text" name="Phone" th:value="${user.Phone}" class="col-sm-9 text-secondary"></input>
                   </div>
                   <hr>
                   <div class="row">
                     <div class="col-sm-12">
-                    <a class="btns" th:href="@{EditPtofile(id=${user.id_user})}">Edit</a>
-                      <!-- <button type="submit" class="btn" th:href="@{EditPtofile(id=${user.id_user})}>Edit</button> -->
+                      <button type="submit" class="btn" >Update</button>
                     </div>
                   </div>
                 </div>
