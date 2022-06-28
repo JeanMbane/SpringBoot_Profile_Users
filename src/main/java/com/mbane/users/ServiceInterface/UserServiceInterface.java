@@ -2,8 +2,7 @@ package com.mbane.users.ServiceInterface;
 
 import java.util.List;
 
-
-
+import com.mbane.users.Entity.Roles;
 import com.mbane.users.Entity.Users;
 
 public interface UserServiceInterface {
@@ -23,7 +22,7 @@ public interface UserServiceInterface {
 	 List<Users>findUsersByNameContains(String Na);
 	 List<Users>findUserByPrenomContains(String pre);
 	 List<Users>findUsersByNamesASC();
-	// List<Roles> finUserByRoles(Roles role);
+	 List<Roles> finUserByRoles(Roles role);
 
 	
 	 

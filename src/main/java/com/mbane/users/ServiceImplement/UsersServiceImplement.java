@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mbane.users.Entity.Roles;
 import com.mbane.users.Entity.Users;
 import com.mbane.users.Reposity.UsersReposity;
 import com.mbane.users.ServiceInterface.UserServiceInterface;
@@ -69,13 +70,13 @@ public class UsersServiceImplement implements UserServiceInterface{
 		// TODO Auto-generated method stub
 		return usersReposity.findUsersByNamesAsc();
 	}
-/*
+
 	@Override
 	public List<Roles> finUserByRoles(Roles role) {
 		// TODO Auto-generated method stub
 		return usersReposity.finUserByRoles(role);
 	}
-*/
+
 
 	@Override
 	public Users updatUsers(Users us) {

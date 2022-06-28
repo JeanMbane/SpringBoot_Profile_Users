@@ -110,19 +110,29 @@ public class UserResepotoryTest {
 	
 	@Test
 	void TestLogindroles() {
-		Users use= new Users();
-		use.setName("Lala");
-		use.setPassword("15");
 		
-	Users l=userServiceInterface.login(use.getName(),use.getPassword());
+		String p="eva@gmail.com";
 		
-	  if(Objects.nonNull(l)) 
-			
-		{	
-			System.out.println("Log");
-			System.out.println("");
-		}
-	 
+		Users use= usersReposity.findById(1L).get();
+		// use.getRoles();
+		
+		
+		System.out.println("Role Status:  "+use.getRoles().getStatus());
+		System.out.println("User: "+use);
+		
+		System.out.println("");
+		
+		/*
+		 * use.setName("Lala"); use.setPassword("15");
+		 * 
+		 * 
+		 * 
+		 * Users l=userServiceInterface.login(use.getName(),use.getPassword());
+		 * 
+		 * if(Objects.nonNull(l))
+		 * 
+		 * { System.out.println("Log"); System.out.println(""); }
+		 */
 	  
 		    
 		

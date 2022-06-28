@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import com.mbane.users.Entity.Roles;
 import com.mbane.users.Entity.Users;
 
 @RepositoryRestResource(path="rest")
@@ -36,8 +37,8 @@ public interface UsersReposity extends JpaRepository<Users, Long>{
 	List<Users>findUserByPrenom(String prenom);
 	
 
-	//@Query(" select r from Roles r")
-	//List<Roles> finUserByRoles(Roles role);
+	@Query(" select r from Roles r")
+	List<Roles> finUserByRoles(Roles role);
 	
 	@Query("select u from Users u order by u.name ASC")
 	List<Users>findUsersByNamesAsc();

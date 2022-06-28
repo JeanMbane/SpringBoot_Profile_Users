@@ -38,11 +38,10 @@ public class AppController {
 	@Autowired
 	private UserServiceInterface userServiceInterface;
 	
-	private Users outus;
 	@GetMapping("")
 	private String viewHomepage() 
 	{
-		return "index";
+		return "Userprofiles";
 	}
 	
 	@GetMapping("/Login")
@@ -61,9 +60,6 @@ public class AppController {
 		
 		if(user.getPassword().equals(outlog.getPassword())) 
 		{
-			//on transfer les informations de la base de donnee sur l'interface
-			userProfile(user,modelMap);
-			outus=outlog;
 			modelMap.addAttribute("user",outlog);			
 			return  "Userprofile"; 
 			
@@ -91,7 +87,6 @@ public class AppController {
 		  System.out.println("UserEdtit....: "+user);
 		  model.addAttribute("user",user);
 		
-	  //Users us=userServiceInterface.getUserbyId(id);
 	  return "EditPtofile";
 	  }
 	 
@@ -174,4 +169,14 @@ public class AppController {
 		return user;
 		
 	}
+	
+	
+	@RequestMapping("/AdminUserProfileList")
+	public String AdminUserProfileList(ModelMap model) 
+	{
+		List<Users>us =userServiceInterface.getAllUsers();
+		model.addAttribute("user",us);
+		return"AdminUserProfileList";
+	}
+	
 }

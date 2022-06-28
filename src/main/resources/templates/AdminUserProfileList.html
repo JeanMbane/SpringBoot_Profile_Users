@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link  rel="stylesheet"  type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" >
+<script type="text/javascript" src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border: 2px solid;
+  
+}
+
+#customers td{
+
+  border: 1px solid #ddd;
+  padding: 8px;
+  border: 1px solid;
+  
+}
+
+#customers th {
+
+  border: 1px solid #023020;
+  padding: 8px;
+
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #000000;
+  color: white;
+}
+
+
+#customers input{
+
+ font-size: 18px;
+ border: none;
+ max-width:100px;
+ background-color: none;
+ 
+}
+
+
+.previous {
+color: white;
+padding: 10px 15px;
+border: medium;  
+font-size: 10px;
+background-color: dodgerblue;
+margin:10px;
+color: white;
+}
+
+ a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+</style>
+<script type="text/javascript">
+function edit(el) {
+	  el.childNodes[0].removeAttribute("disabled");
+	  el.childNodes[0].focus();
+	  window.getSelection().removeAllRanges();
+	}
+	
+function disable(el) {
+	  el.setAttribute("disabled","");
+	}
+</script>
+<title>Users Profiles List</title>
+</head>
+
+<body>
+
+
+
+<form th:action="@{/user_updated}" style="max-width:900px;margin:50px;" th:object="${user}" method="post">
+<div class="container">
+<div class="card">
+  <div class="card-header">
+   <h3> Users Profiles List</h3>
+  </div>
+  <div class="card-body">
+     <table id="customers" >
+  
+     <tr>
+         <th>Name</th><th>Prenom</th><th>Email</th><th>Date</th> <th>Address</th><th>Company</th><th>Phone</th><th>Enable</th><th>Role</th><th>option           </th>
+     </tr>
+       <tr th:each="u:${user}">
+           <td  th:ondblclick="edit(this)"><input th:value="${u.name}" disabled onblur="disable(this)"></td>  
+           <td  th:ondblclick="edit(this)"><input th:value="${u.prenom}"  disabled onblur="disable(this)"></td> 
+           <td  th:ondblclick="edit(this)"><input style="max-width:250px" th:value="${u.email}" disabled onblur="disable(this)"></td> 
+           <td  th:ondblclick="edit(this)"><input style="max-width:250px" th:value="@{u.datede_naissance}" disabled onblur="disable(this)"></td> 
+           <td  th:ondblclick="edit(this)"><input style="max-width:250px" th:value="${u.address}"  disabled onblur="disable(this)"></td> 
+           <td  th:ondblclick="edit(this)"><input th:value="${u.company}" disabled onblur="disable(this)"></td> 
+           <td  th:ondblclick="edit(this)"><input th:value="${u.phone}" disabled onblur="disable(this)"></td>
+           <td  th:ondblclick="edit(this)"><input th:value="${u.enabled}" disabled onblur="disable(this)"></td>
+           <td>
+              <p th:each="l:${u.roles}">
+                 <span th:ondblclick="edit(this)"><input th:value="${l.status}" disabled onblur="disable(this)"></span>
+              </p>
+           
+           </td> 
+           <td >
+             <div class="Option" >
+            
+             <p><a class="previous" >Update</a><a type="submit"  class="previous" >Delete</a></p>
+             </div>
+            
+           </td>             
+       </tr>
+ 
+     </table>
+ 
+  </div>
+
+
+
+
+</div>
+</div>
+</form>
+</body>
+</html>
