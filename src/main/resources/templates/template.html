@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<head>
+<meta charset="ISO-8859-1">
+<title>Gestions Des Profiles</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<a class="navbar-brand">MJA Profiles</a>
+
+<!-- home link -->
+<ul class="navbar-nav">
+<li class="nav-item">
+  <a class="nav-link" th:href="@{home}">Home</a>
+</li>
+<!-- Dropdown menue -->
+
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href='#' id="navbardrop" data-toggle="dopdown">Menu</a>
+<div class="dropdown-menu">
+   <a class="dropdown-item" th:href="@{register}">New Profile</a>
+   <a class="dropdown-item" th:href="@{AdminUserProfileList}">ProfileList</a>
+</div>
+</li>
+</ul>
+
+ <ul class="navbar-nav ml-auto" > 
+     <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+      [username]
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">login</a>
+        <a class="dropdown-item" href="#">logout</a>
+          <a class="dropdown-item" href="@{Userprofile}">Profile</a>
+      </div>
+    </li>
+  </ul>
+
+</nav>
+<section layout:fragment="Mycontent">
+</section>
+
+
+</body>
+</html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html  xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorator="~{menubare}">
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
 <!-- Add icon library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link  rel="stylesheet"  type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" >
-<script type="text/javascript" src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <style type="text/css">
 
@@ -14,7 +14,6 @@
   border-collapse: collapse;
   width: 100%;
   border: 2px solid;
-  
 }
 
 #customers td{
@@ -86,15 +85,13 @@ function disable(el) {
 </head>
 
 <body>
-
-
-
-<form th:action="@{/user_updated}" style="max-width:900px;margin:50px;" th:object="${user}" method="post">
-<div class="container">
+<div layout:decorate="~{layout}">
+<div layout:fragment="Mycontent" class="container">
 <div class="card">
   <div class="card-header">
    <h3> Users Profiles List</h3>
   </div>
+<form th:action="@{/user_updated}" style="max-width:900px;margin:50px;" th:object="${user}" method="post">
   <div class="card-body">
      <table id="customers" >
   
@@ -129,11 +126,13 @@ function disable(el) {
  
   </div>
 
-
-
-
-</div>
-</div>
 </form>
+
+
+</div>
+</div>
+</div>
+</div>
+
 </body>
 </html>

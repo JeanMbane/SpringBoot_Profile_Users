@@ -39,9 +39,15 @@ public class AppController {
 	private UserServiceInterface userServiceInterface;
 	
 	@GetMapping("")
+	private String Homepage() 
+	{
+		return "menubare";
+	}
+	
+	@GetMapping("/home")
 	private String viewHomepage() 
 	{
-		return "Userprofiles";
+		return "index";
 	}
 	
 	@GetMapping("/Login")
