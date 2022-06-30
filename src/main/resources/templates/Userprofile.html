@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+xmlns:th="http://www.thymeleaf.org"
+layout:decorate="~{menubare}"
+>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Add icon library -->
@@ -138,6 +143,7 @@ body{
 </style>
 </head>
 <body>
+<div layout:fragment="content">
 <form th:action="@{/EditPtofile}" style="max-width:900px;margin:auto;" method="post">
 <div class="grid-container">
   <div class="card-body">
@@ -334,5 +340,6 @@ body{
 </div>
 
 </form>
+</div>
 </body>
 </html>
