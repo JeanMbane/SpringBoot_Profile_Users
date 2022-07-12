@@ -1,0 +1,93 @@
+
+#test{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 2px solid;
+  margin: 10px;
+}
+
+
+
+
+#test td{
+  border: 1px solid #ddd;
+  padding: 8px;
+  border: 1px solid;
+  
+}
+
+#test th {
+
+  border: 1px solid #023020;
+  padding: 8px;
+
+}
+
+#tes tr:nth-child(even){background-color: #f2f2f2}
+
+#test tr:hover {background-color: #ddd;}
+
+#test th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #000000;
+  color: white;
+}
+
+#test input{
+
+ font-size: 18px;
+ border: none;
+ max-width:100px;
+ background-color: none;
+ 
+}
+
+#customers input{
+
+ font-size: 18px;
+ border: none;
+ max-width:100px;
+ background-color: none;
+ 
+}
+
+
+.previous {
+
+color: white;
+padding: 10px 15px;
+border: medium;  
+font-size: 10px;
+background-color: dodgerblue;
+margin:10px;
+color: white;
+}
+
+ a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.Option {
+  position: relative;
+  display: inline-block;
+  
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 13px;
+  z-index: 1;
+  
+}
+
+.Option:hover .dropdown-content {
+  display: block;
+}

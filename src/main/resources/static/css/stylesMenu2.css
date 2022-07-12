@@ -1,9 +1,3 @@
-body
-{
-	margin:0;
-
-}
-
 .navbardrop, .navbardropUser {
 	background-color: #04AA6D;
 	color: white;
@@ -51,3 +45,6 @@ body
 .show {
 	display: block;
 }
+
+
+

@@ -3,7 +3,6 @@
 
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 xmlns:th="http://www.thymeleaf.org"
-layout:decorate="~{menubare}"
 >
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,139 +10,13 @@ layout:decorate="~{menubare}"
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link  rel="stylesheet"  type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" >
 <meta charset="ISO-8859-1">
-<style>
+<link rel="stylesheet"  type="text/css" th:href="@{/css/style.css}">
 
-.item2 { grid-area: menu; }
-.item3 { grid-area: main; }
-.item5 { grid-area: footer; }
-
-.grid-container {
-  display: grid;
-  grid-template-areas:
-
-    ' main main main  menu menu'
-    ' footer footer  footer menu menu';
-  gap: 20px;
-
-  padding: 1px;
-}
-
-.grid-container > div {
-
-  text-align: left;
-  word-spacing:1px;
-  padding: 20px 0;
-  font-size: 25px;
-}
-
-.btn {
-  background-color: dodgerblue;
-  color: white;
-  padding: 15px 20px;
-  border: none;
-  cursor: pointer;
-  width:  20%;
-  opacity: 0.9;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.btnl {
-  background-color: dodgerblue;
-  color: white;
-  padding: 9px 20px;
-  border: none;
-  cursor: pointer;
-  width:  20%;
-  opacity: 0.9;
-  font-size: 20px;
-  
-}
-.btns {
-  background-color: dodgerblue;
-  color: white;
-  padding: 5px 20px;
-  border: none;
-  cursor: pointer;
-  width:  10px;
-  opacity: 0.9;
-  font-size:20px;
-}
-
-.text-second{
-font-size:15px;
- opacity: 0.4;
- text-align: right;
-}
-body{
-
-    margin-top:20px;
-    color: #1a202c;
-    text-align: left;
-    background-color: #e2e8f0;    
-}
-
-.main-body {
-    padding: 1px;
-}
-.card {
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-}
-
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 0 solid rgba(0,0,0,.125);
-    border-radius: .25rem;
- 
-}
-
-.card-body {
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 1rem;
-    width: 480px;
-}
-
-.cards-body {
-    min-height: 1px;
-}
-
-.gutters-sm {
-    margin-right: -8px;
-    margin-left: -8px;
-}
-
-.gutters-sm>.col, .gutters-sm>[class*=col-] {
-    padding-right: 8px;
-    padding-left: 8px;
-}
-.mb-3, .my-3 {
-    margin-bottom: 1rem!important;
-}
-
-.bg-gray-300 {
-    background-color: #e2e8f0;
-}
-.h-100 {
-    height: 10%!important;
-}
-.shadow-none {
-    box-shadow: none!important;
-}
-
-</style>
 </head>
 <body>
-<div layout:fragment="content">
+<!-- <div th:insert="fragments/header :: header"> -->
+
+ <section class="my-5">
 <form th:action="@{/EditPtofile}" style="max-width:900px;margin:auto;" method="post">
 <div class="grid-container">
   <div class="card-body">
@@ -171,7 +44,7 @@ body{
 
   <div class="item5">
    
-  <div class="card mt-2" style="max-height: 486px;font-size:22px;">
+  <div class="card mt-2" style="max-height: 492px;font-size:22px;">
                 <table class="list-group list-group-flush" style="width:100%">
                   <tr>
                   <th>
@@ -340,6 +213,7 @@ body{
 </div>
 
 </form>
-</div>
+ </section>
+<!-- </div> -->
 </body>
 </html>

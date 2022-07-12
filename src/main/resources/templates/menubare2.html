@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="en" dir="ltr"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      
+  <head th:fragment="Header_nav">
+  
+  <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/Menber-script.js"></script> 
+  <link rel="stylesheet"  type="text/css" th:href="@{/css/stylesMenuSlide2.css}"/>
+  <link rel="stylesheet"  type="text/css" th:href="@{/css/stylesMenu2.css}"/>
+    <meta charset="UTF-8">
+    <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+   <link rel="stylesheet"  type="text/css" href="css/styleList.css"/>
+ 
+   </head>
+<body>
+
+<div th:fragment="Menu_nav" >
+
+<div class="Menu_hori" >
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<a class="navbar-brand" style="color: #ddd;margin-left:75px">MJA Profiles</a>
+		<!-- home link -->
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" th:href="@{home}" style="margin-left: 45px">HOME</a>
+			</li>
+			<!-- Dropdown menue -->
+
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href='#' id="navbardrop"
+				data-toggle="dropdown" th:onclick="myFunction()">Menu</a>
+
+				<div id="myDropdown" class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{register}">New Profile</a> <a
+						class="dropdown-item" th:href="@{AdminUserProfileList}">ProfileList</a>
+				</div></li>
+		</ul>
+
+		<ul class="navbar-nav " style="margin-left: 1400px">
+			<li class="nav-item dropdown"><a
+				class="nav-link1 dropdown-toggle" href='#' id="navbardropUser"
+				data-toggle="dropdown" th:onclick="myFunction1()"
+				style="color: #ddd;" th:text="[username]"> </a>
+				<div id="myDropdown1" class="dropdown-menu1">
+				<a class="dropdown-item" href="#">logout</a> 
+				<a class="dropdown-item"th:href="@{Userprofile}">Profile</a>
+				</div></li>
+		</ul>
+
+	</nav>
+</div>
+
+  <div class="sidebar one">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus bx-menu'></i>
+      <span class="logo_name">MEVA-TECH</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="#">
+          <i class='bx bx-grid-alt' ></i>
+          <span class="link_name">Dashboard</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Category</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Category</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Category</a></li>
+          <li><a href="#ADMIN">ADMIN</a></li>
+          <li><a href="#AGENT">AGENT</a></li>
+          <li><a href="#GUEST">GUEST</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-book-alt' ></i>
+            <span class="link_name">Posts</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Posts</a></li>
+          <li><a href="#">Web Design</a></li>
+          <li><a href="#">Login Form</a></li>
+          <li><a href="#">Card Design</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-pie-chart-alt-2' ></i>
+          <span class="link_name">Analytics</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Analytics</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-line-chart' ></i>
+          <span class="link_name">Chart</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Chart</a></li>
+        </ul>
+      </li>
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-plug' ></i>
+            <span class="link_name">Plugins</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Plugins</a></li>
+          <li><a href="#">UI Face</a></li>
+          <li><a href="#">Pigments</a></li>
+          <li><a href="#">Box Icons</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-compass' ></i>
+          <span class="link_name">Explore</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Explore</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-history'></i>
+          <span class="link_name">History</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">History</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-cog' ></i>
+          <span class="link_name">Setting</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">Setting</a></li>
+        </ul>
+      </li>
+      <li>
+    <div class="profile-details">
+      <div class="profile-content">
+        <!--<img src="image/profile.jpg" alt="profileImg">-->
+      </div>
+      <div class="name-job">
+        <div class="profile_name">Prem Shahi</div>
+        <div class="job">Web Desginer</div>
+      </div>
+      <i class='bx bx-log-out' ></i>
+    </div>
+  </li>
+</ul>
+  </div>
+  <section class="home-section">
+  </section>
+<script type="text/javascript" src="js/Menber-script2.js"></script> 
+</div>
+
+
+</body>
+
+</html>

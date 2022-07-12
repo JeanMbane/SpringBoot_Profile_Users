@@ -1,99 +1,103 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-layout:decorator="~{menubare}">
-<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
-<head>
+>
+<head th:replace="menubare2 :: Header_nav">
 <meta charset="utf-8">
 <!-- Add icon library -->
 
-<style type="text/css">
-
-#customers {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  border: 2px solid;
-}
-
-#customers td{
-
-  border: 1px solid #ddd;
-  padding: 8px;
-  border: 1px solid;
-  
-}
-
-#customers th {
-
-  border: 1px solid #023020;
-  padding: 8px;
-
-}
-
-#customers tr:nth-child(even){background-color: #f2f2f2}
-
-#customers tr:hover {background-color: #ddd;}
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #000000;
-  color: white;
-}
 
 
-#customers input{
-
- font-size: 18px;
- border: none;
- max-width:100px;
- background-color: none;
- 
-}
-
-
-.previous {
-color: white;
-padding: 10px 15px;
-border: medium;  
-font-size: 10px;
-background-color: dodgerblue;
-margin:10px;
-color: white;
-}
-
- a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-</style>
-<script type="text/javascript">
-function edit(el) {
-	  el.childNodes[0].removeAttribute("disabled");
-	  el.childNodes[0].focus();
-	  window.getSelection().removeAllRanges();
-	}
-	
-function disable(el) {
-	  el.setAttribute("disabled","");
-	}
-</script>
-<title>Users Profiles List</title>
 </head>
 
 <body>
 
-<div class="container">
-<div class="card">
-  <div class="card-header">
-   <h3> Users Profiles List</h3>
-  </div>
-<form th:action="@{/user_updated}" style="max-width:900px;margin:50px;" th:object="${user}" method="post">
-  <div class="card-body">
-     <table id="customers" >
+<div th:replace="menubare2 :: Menu_nav" ></div>
+<div style="padding-left:250px; margin:30px;" ><h3>Users Lists</h3></div>
+<div style="padding-left:270px;margin:auto;" th:object="${user}" >
+  
+
+
+     
+     <table id="test" >
+     <tr>
+        <th>option</th><th>Name</th><th>Prenom</th><th>Email</th><th>Date</th> <th>Address</th><th>Company</th><th>Phone</th><th>Enable</th><th>Role</th>
+     </tr>
+     
+       <tr th:each="u:${user}">
+       
+           <td >
+             <label class="myCheck1">Checkbox:</label> 
+          <input type="checkbox" id="myCheck" onclick="myFunction()" value="${uStat.index}">         
+             <div class="Option" >           
+             <p><a type="" class="previous" style="padding: 10px;">Edit</a> </p>            
+              <div class="dropdown-content" id="te">  
+              <h4>Profile: <a th:text="${u.name}"></a> </h4>
+      <form th:action="@{/user_updated}" method="post">         
+              <table style="margin-top: 17px;width: 350px">   
+              <tr>
+                <th style="width: 10px">Name</th><td><input  style="max-width:250px" th:value="${u.name}"></td>
+              </tr>
+                <tr>
+                <th>Prenom</th><td><input style="max-width:250px" th:value="${u.prenom}"></td>
+              </tr>
+                <tr>
+                <th>Email</th><td><input style="max-width:250px" th:value="${u.email}"></td>
+              </tr>
+                <tr>
+                <th>Date</th><td><input style="max-width:250px" th:value="${#dates.format(u.datedeNaissance,'dd/MM/YYYY')}"></td>
+              </tr>
+                <tr>
+                <th>Address</th><td><input style="max-width:250px" th:value="${u.address}"></td>
+              </tr>
+                <tr>
+                <th>Company</th><td><input style="max-width:250px"  th:value="${u.company}"></td>
+              </tr>
+                <tr>
+                <th>Phone</th><td><input style="max-width:400px" th:value="${u.phone}"></td>
+              </tr>
+                <tr>
+                <th>Enable</th><td><input style="max-width:400px" th:value="${u.enabled}"></td>
+              </tr>
+              <tr>
+                <th>Role</th><td><input style="max-width:400px" th:value="${u.enabled}"></td>
+              </tr>
+            
+              </table>
+              
+             <div style="margin-top: 17px;width: 362px;">            
+              <div style="padding-left: 198.6px;margin-top: 20px;">
+              <a class="previous" style="padding-left: 10.5px;" >Update</a>
+              <a  class="previous" style="padding-left: 15px;">Delete</a>
+     
+              </div>
+              </div>
+              </form>
+              </div>
+                                                
+             </div>
+             </td> 
+              
+           <td  th:ondblclick="edit(this)"><input th:value="${u.name}" disabled onblur="disable(this)"></td>  
+           <td  th:ondblclick="edit(this)"><input th:value="${u.prenom}"  disabled onblur="disable(this)"></td> 
+           <td  th:ondblclick="edit(this)"><input style="max-width:250px" th:value="${u.email}" disabled onblur="disable(this)"></td> 
+           <td  th:ondblclick="edit(this)"><input style="max-width:250px" th:value="${#dates.format(u.datedeNaissance,'dd/MM/YYYY')}" disabled onblur="disable(this)"></td> 
+           <td  th:ondblclick="edit(this)"><input style="max-width:250px" th:value="${u.address}"  disabled onblur="disable(this)"></td> 
+           <td  th:ondblclick="edit(this)"><input th:value="${u.company}" disabled onblur="disable(this)"></td> 
+           <td  th:ondblclick="edit(this)"><input th:value="${u.phone}" disabled onblur="disable(this)"></td>
+           <td  th:ondblclick="edit(this)"><input th:value="${u.enabled}" disabled onblur="disable(this)"></td>
+           <td>
+              <p th:each="l:${u.roles}">
+                 <span th:ondblclick="edit(this)"><input style="margin-top: 17px;" th:value="${l.status}" disabled onblur="disable(this)"></span>
+              </p>
+           
+           </td>            
+       </tr>
+ 
+     </table>
+
+
+
+     <!-- <table id="customers" >
   
      <tr>
          <th>Name</th><th>Prenom</th><th>Email</th><th>Date</th> <th>Address</th><th>Company</th><th>Phone</th><th>Enable</th><th>Role</th><th>option           </th>
@@ -102,7 +106,7 @@ function disable(el) {
            <td  th:ondblclick="edit(this)"><input th:value="${u.name}" disabled onblur="disable(this)"></td>  
            <td  th:ondblclick="edit(this)"><input th:value="${u.prenom}"  disabled onblur="disable(this)"></td> 
            <td  th:ondblclick="edit(this)"><input style="max-width:250px" th:value="${u.email}" disabled onblur="disable(this)"></td> 
-           <td  th:ondblclick="edit(this)"><input style="max-width:250px" th:value="@{u.datede_naissance}" disabled onblur="disable(this)"></td> 
+           <td  th:ondblclick="edit(this)"><input style="max-width:250px" th:value="${#dates.format(u.datedeNaissance,'dd/MM/YYYY')}" disabled onblur="disable(this)"></td> 
            <td  th:ondblclick="edit(this)"><input style="max-width:250px" th:value="${u.address}"  disabled onblur="disable(this)"></td> 
            <td  th:ondblclick="edit(this)"><input th:value="${u.company}" disabled onblur="disable(this)"></td> 
            <td  th:ondblclick="edit(this)"><input th:value="${u.phone}" disabled onblur="disable(this)"></td>
@@ -122,14 +126,32 @@ function disable(el) {
            </td>             
        </tr>
  
-     </table>
- 
-  </div>
-
-</form>
-
+     </table> -->
 
 </div>
-</div>
+
+<script>
+function myFunction() {
+	 
+
+  var checkBox = document.getElementById("myCheck");
+  var text = document.getElementById("te");
+  if (checkBox.checked == true){
+	  if(checkBox.tabIndex == "0")
+	  { 
+		  
+		  text.style.display = "block";
+		
+	  }
+    
+  } else {
+     text.style.display = "none";
+  }
+}
+</script>
+
 </body>
+<footer style="margin-top: 480px;padding-left: 1740px; ">
+<div th:insert="menubare :: footer"></div>
+</footer>
 </html>

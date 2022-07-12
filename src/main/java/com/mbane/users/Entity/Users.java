@@ -37,9 +37,9 @@ public class Users {
     @Column(nullable = false,unique = true)
 	private String email;
 
-	private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(("dd/MM/yyyy"));
+	private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(("YYYY-MM-dd"));
 	
-	@DateTimeFormat(pattern = "dd/MM/YYYY")
+	@DateTimeFormat(pattern = "YYYY-MM-dd")
 	private Date datedeNaissance;
 
 

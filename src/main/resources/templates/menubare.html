@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org">
 
-<link rel="stylesheet" type="text/css"
-	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head th:fragment="header_menu">
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
 <script src="webjars/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript"
-	src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<head>
+<script type="text/javascript" src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet"  type="text/css" th:href="@{/css/stylesMenu.css}"/>
 <meta charset="ISO-8859-1">
-<style>
+
+<link rel="stylesheet"  type="text/css" href="css/stylesMenu.css"/>
+<link rel="stylesheet"  type="text/css" href="css/styleList.css"/>
+<script type="text/javascript" src="js/Menber-script.js"></script>
+<!-- <style>
 .navbardrop, .navbardropUser {
 	background-color: #04AA6D;
 	color: white;
@@ -58,46 +60,12 @@
 	display: block;
 }
 
-</style>
+</style> -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Menmber Layout</title>
+<script type="text/javascript" src="js/Menber-script.js"></script>
 
-<title>Gestions Des Profiles</title>
-</head>
-<body>
-
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-		<a class="navbar-brand" style="color: #ddd;">MJA Profiles</a>
-
-		<!-- home link -->
-		<ul class="navbar-nav">
-			<li class="nav-item"><a class="nav-link" th:href="@{home}">Home</a>
-			</li>
-			<!-- Dropdown menue -->
-
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href='#' id="navbardrop"
-				data-toggle="dropdown" th:onclick="myFunction()">Menu</a>
-
-				<div id="myDropdown" class="dropdown-menu">
-					<a class="dropdown-item" th:href="@{register}">New Profile</a> <a
-						class="dropdown-item" th:href="@{AdminUserProfileList}">ProfileList</a>
-				</div></li>
-		</ul>
-
-		<ul class="navbar-nav ml-auto">
-			<li class="nav-item dropdown"><a
-				class="nav-link1 dropdown-toggle" href='#' id="navbardropUser"
-				data-toggle="dropdown" th:onclick="myFunction1()"
-				style="color: #ddd;" th:text="[username]"> </a>
-				<div id="myDropdown1" class="dropdown-menu1">
-				<a class="dropdown-item" href="#">logout</a> <a class="dropdown-item"
-						th:href="@{Userprofile}">Profile</a>
-				</div></li>
-		</ul>
-
-	</nav>
-
-
-	<script>
+<!-- 	<script>
 
 	/* When the user clicks on the button, 
 	 toggle between hiding and showing the dropdown content */
@@ -171,6 +139,50 @@
 
 	}
 </script>
+ -->
+</head>
+
+<body>
+   
+	<div th:fragment="nave_menu">
+	
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark" th:fragment="header">
+		<a class="navbar-brand" style="color: #ddd;">MJA Profiles</a>
+
+		<!-- home link -->
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" th:href="@{home}">Home</a>
+			</li>
+			<!-- Dropdown menue -->
+
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href='#' id="navbardrop"
+				data-toggle="dropdown" th:onclick="myFunction()">Menu</a>
+
+				<div id="myDropdown" class="dropdown-menu">
+					<a class="dropdown-item" th:href="@{register}">New Profile</a> <a
+						class="dropdown-item" th:href="@{AdminUserProfileList}">ProfileList</a>
+				</div></li>
+		</ul>
+
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item dropdown"><a
+				class="nav-link1 dropdown-toggle" href='#' id="navbardropUser"
+				data-toggle="dropdown" th:onclick="myFunction1()"
+				style="color: #ddd;" th:text="[username]"> </a>
+				<div id="myDropdown1" class="dropdown-menu1">
+				<a class="dropdown-item" href="#">logout</a> 
+				<a class="dropdown-item"th:href="@{Userprofile}">Profile</a>
+				</div></li>
+		</ul>
+
+	</nav>
+
+	</div>
+	
+	<footer th:fragment="footer">
+	<div>&copy; 2022 - meva-tech.com</div>
+	</footer>
 
 </body>
 </html>

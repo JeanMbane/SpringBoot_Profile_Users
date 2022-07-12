@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +42,7 @@ public class AppController {
 	@GetMapping("")
 	private String Homepage() 
 	{
-		return "menubare";
+		return "menubare2";
 	}
 	
 	@GetMapping("/home")
@@ -99,16 +100,17 @@ public class AppController {
 	
 	
 	@GetMapping("/register")
-	String ShowSignUpForm(Model model) 
+	String ShowSignUpForm(Model model,@ModelAttribute("user") Users user) 
 	{	
-		Users customer= new Users();
-		model.addAttribute("user",customer);
+
+		model.addAttribute("user",user);
 		return "Singup_form1";
 	}
 	
 	@PostMapping("/process_register")
-	public String processEnregistion(Users user) 
+	public String processEnregistion(@ModelAttribute("user") Users user) 
 	{
+
 		userServiceInterface.saveUsers(user);	
 		return"success_register";
 	}
